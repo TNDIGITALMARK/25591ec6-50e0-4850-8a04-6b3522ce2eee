@@ -1,59 +1,83 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   MARKETVIBE DESIGN SYSTEM
+   Pixel-perfect replication of design reference
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* MARKETVIBE Color Palette (Exact HSL values from design reference) */
 
-  /* Clean white cards with black text */
+  /* Primary Navy - Header/Footer (#2c3e5f) */
+  --primary-navy: 214 36% 27%;
+  --primary-navy-foreground: 0 0% 100%;
+
+  /* Coral/Orange - CTA Buttons (#ff8563) */
+  --coral-orange: 13 100% 69%;
+  --coral-orange-foreground: 0 0% 100%;
+
+  /* Blue Accent - Gradients & Charts (#5b7fe6) */
+  --blue-accent: 225 74% 63%;
+  --blue-accent-foreground: 0 0% 100%;
+
+  /* Light Background (#f5f7fa) */
+  --background: 216 33% 97%;
+  --foreground: 217 33% 17%;
+
+  /* White Cards */
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  --card-foreground: 217 33% 17%;
 
-  /* Popovers with white background */
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  /* Price Badge Blue (#2563eb) */
+  --price-badge: 221 83% 53%;
+  --price-badge-foreground: 0 0% 100%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
+  /* Gray Text Variants */
+  --text-gray: 220 9% 46%;
+  --text-dark: 217 33% 17%;
+
+  /* Star Rating Yellow/Orange (#fbbf24) */
+  --star-rating: 43 96% 56%;
+
+  /* Design System Colors */
+  --primary: 214 36% 27%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  --secondary: 216 33% 97%;
+  --secondary-foreground: 217 33% 17%;
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  --muted: 210 20% 94%;
+  --muted-foreground: 220 9% 46%;
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  --accent: 13 100% 69%;
+  --accent-foreground: 0 0% 100%;
 
-  /* Destructive: Clean red */
   --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  /* Borders & Inputs */
+  --border: 214 20% 88%;
+  --input: 214 20% 88%;
+  --ring: 214 36% 27%;
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Border Radius (8px for cards, 6px for buttons) */
+  --radius: 0.5rem;
+  --radius-button: 0.375rem;
 
-  /* Sidebar: Clean white with black text */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 217 33% 17%;
+
+  /* Sidebar */
+  --sidebar-background: 214 36% 27%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 214 36% 27%;
+  --sidebar-accent: 214 36% 32%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 214 36% 22%;
+  --sidebar-ring: 0 0% 100%;
 }
 
 .dark {
@@ -168,28 +192,156 @@ All colors MUST be HSL.
   border-color: hsl(var(--border));
 }
 
+/* ============================================
+   TYPOGRAPHY SYSTEM - Inter Font Family
+   ============================================ */
+html {
+  font-size: 16px;
+}
+
 body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Minimal, clean typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+/* Typography Scale - MarketVibe */
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.025em;
+  color: hsl(var(--text-dark));
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: hsl(var(--text-dark));
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: hsl(var(--text-dark));
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: hsl(var(--text-dark));
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: hsl(var(--text-dark));
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: hsl(var(--text-dark));
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
   color: hsl(var(--foreground));
 }
 
-/* Clean button styles */
-button {
-  font-weight: 500;
+a {
+  color: hsl(var(--blue-accent));
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* Subtle shadows for depth */
+a:hover {
+  color: hsl(var(--coral-orange));
+}
+
+/* ============================================
+   BUTTON STYLES - MarketVibe
+   ============================================ */
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: hsl(var(--coral-orange));
+  color: hsl(var(--coral-orange-foreground));
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-button);
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(13 100% 63%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 133, 99, 0.3);
+}
+
+.btn-secondary {
+  background-color: hsl(var(--primary-navy));
+  color: hsl(var(--primary-navy-foreground));
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-button);
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: hsl(214 36% 32%);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-button);
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--primary-navy));
+  box-shadow: 0 0 0 3px hsl(var(--primary-navy) / 0.1);
+}
+
+/* ============================================
+   CARD SHADOWS - MarketVibe Style
+   ============================================ */
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
@@ -200,4 +352,52 @@ button {
 
 .shadow-md {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.shadow-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   UTILITY CLASSES - MarketVibe
+   ============================================ */
+.text-coral {
+  color: hsl(var(--coral-orange));
+}
+
+.bg-coral {
+  background-color: hsl(var(--coral-orange));
+}
+
+.text-navy {
+  color: hsl(var(--primary-navy));
+}
+
+.bg-navy {
+  background-color: hsl(var(--primary-navy));
+}
+
+.text-blue-accent {
+  color: hsl(var(--blue-accent));
+}
+
+.bg-blue-accent {
+  background-color: hsl(var(--blue-accent));
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, hsl(var(--coral-orange)) 0%, hsl(var(--blue-accent)) 100%);
+}
+
+.price-badge {
+  background-color: hsl(var(--price-badge));
+  color: hsl(var(--price-badge-foreground));
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
