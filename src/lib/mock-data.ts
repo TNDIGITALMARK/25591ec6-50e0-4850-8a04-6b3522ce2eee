@@ -1,4 +1,4 @@
-// Mock data for MarketVibe marketplace
+// Mock data for Anthos marketplace
 
 export interface Product {
   id: string;

@@ -6,6 +6,8 @@ import { MarketCard } from '@/components/markets/MarketCard';
 import { mockMarkets, categories, marketStats } from '@/lib/mock-markets';
 import { TrendingUp, Activity, Users, BarChart3 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function DashboardPage() {
   const [selectedCategory, setSelectedCategory] = useState('All Markets');
@@ -129,7 +131,25 @@ export default function DashboardPage() {
       {/* Footer */}
       <footer className="border-t border-border mt-16 py-12">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            {/* Logo Column */}
+            <div className="md:col-span-1">
+              <Link href="/dashboard" className="flex items-center gap-3 mb-4">
+                <Image
+                  src="/generated/anthos-icon.png"
+                  alt="Anthos"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                />
+                <span className="text-xl font-bold text-foreground">Anthos</span>
+              </Link>
+              <p className="text-sm text-muted-foreground mt-4">
+                Trade the future with confidence on the first regulated prediction market exchange.
+              </p>
+            </div>
+
+            {/* Markets Column */}
             <div>
               <h3 className="font-bold text-lg mb-4">Markets</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
@@ -155,6 +175,8 @@ export default function DashboardPage() {
                 </li>
               </ul>
             </div>
+
+            {/* Learn Column */}
             <div>
               <h3 className="font-bold text-lg mb-4">Learn</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
@@ -180,6 +202,8 @@ export default function DashboardPage() {
                 </li>
               </ul>
             </div>
+
+            {/* Company Column */}
             <div>
               <h3 className="font-bold text-lg mb-4">Company</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
@@ -205,6 +229,8 @@ export default function DashboardPage() {
                 </li>
               </ul>
             </div>
+
+            {/* Legal Column */}
             <div>
               <h3 className="font-bold text-lg mb-4">Legal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
@@ -226,10 +252,17 @@ export default function DashboardPage() {
               </ul>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>
-              © 2025 Kalshi. CFTC-regulated exchange. Trading involves risk.
+
+          {/* Copyright Section */}
+          <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Anthos. CFTC-regulated exchange. Trading involves risk.
             </p>
+            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors">Twitter</a>
+              <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
+              <a href="#" className="hover:text-primary transition-colors">Discord</a>
+            </div>
           </div>
         </div>
       </footer>

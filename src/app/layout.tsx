@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryProvider } from "@/components/query-provider";
@@ -8,15 +8,21 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "MarketVibe - Your E-commerce Marketplace",
-  description: "Discover products, manage your business, and grow with MarketVibe marketplace platform",
+  title: "Anthos - Trade the Future",
+  description: "The first regulated prediction market exchange where you can trade on real-world events with confidence",
 };
 
 export default function RootLayout({
@@ -64,7 +70,7 @@ export default function RootLayout({
         {/* PHOENIX_EDITOR_INJECTION_END */}
       </head>
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${outfit.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <QueryProvider>
           <ZyloProvider>

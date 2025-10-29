@@ -2,19 +2,22 @@ import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export function Header() {
   return (
-    <header className="bg-navy sticky top-0 z-50 w-full border-b border-slate-700">
+    <header className="bg-background sticky top-0 z-50 w-full border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/dashboard" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-coral rounded-lg flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
-            </svg>
-          </div>
-          <span className="text-xl font-bold text-white">MARKETVIBE</span>
+        <Link href="/dashboard" className="flex items-center gap-3 transition-opacity hover:opacity-90">
+          <Image
+            src="/generated/anthos-icon.png"
+            alt="Anthos"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+          />
+          <span className="text-xl font-bold text-foreground">Anthos</span>
         </Link>
 
         {/* Navigation */}

@@ -3,17 +3,26 @@
 import { Search, User, Menu } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export function MarketHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <div className="flex items-center gap-2 mr-8">
+        <Link href="/dashboard" className="flex items-center gap-3 mr-8 transition-opacity hover:opacity-90">
+          <Image
+            src="/generated/anthos-icon.png"
+            alt="Anthos"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+          />
           <div className="font-bold text-xl">
-            <span className="text-foreground">Kalshi</span>
+            <span className="text-foreground">Anthos</span>
           </div>
-        </div>
+        </Link>
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium flex-1">
