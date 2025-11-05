@@ -204,46 +204,113 @@
   
   // Enhanced helper functions for AST/Babel processing
   function extractFilePathFromElement(element) {
-    // Use source map tracker if available
+    // PRIORITY 1: Check for stamped attributes (from build-time plugin)
+    const stampedSource = element.getAttribute('data-phoenix-source');
+    if (stampedSource) {
+      log('✅ Using stamped source:', stampedSource);
+      return stampedSource;
+    }
+
+    // PRIORITY 2: Try index lookup if available
+    if (window.__phoenixIndexLoader) {
+      // Try nodeId lookup
+      const nodeId = element.getAttribute('data-phoenix-id');
+      if (nodeId) {
+        const entry = window.__phoenixIndexLoader.findByNodeId(nodeId);
+        if (entry) {
+          log('✅ Index match by nodeId:', entry.file);
+          return entry.file;
+        }
+      }
+
+      // Try CSS path lookup
+      const cssPath = window.__phoenixIndexLoader.buildCSSPathFromElement(element);
+      const pathEntry = window.__phoenixIndexLoader.findByPath(cssPath);
+      if (pathEntry) {
+        log('✅ Index match by CSS path:', pathEntry.file);
+        return pathEntry.file;
+      }
+
+      // Try fingerprint lookup
+      const fingerprint = window.__phoenixIndexLoader.buildFingerprintFromElement(element);
+      const fpEntry = window.__phoenixIndexLoader.findByFingerprint(fingerprint);
+      if (fpEntry) {
+        log('✅ Index match by fingerprint:', fpEntry.file);
+        return fpEntry.file;
+      }
+
+      // Try class lookup
+      const classes = element.className?.split(' ').filter(Boolean) || [];
+      for (const cls of classes) {
+        const classEntry = window.__phoenixIndexLoader.findByClass(cls);
+        if (classEntry && !Array.isArray(classEntry)) {
+          log('✅ Index match by unique class:', classEntry.file);
+          return classEntry.file;
+        }
+      }
+    }
+
+    // PRIORITY 3: Use source map tracker
     if (window.__phoenixSourceMapTracker) {
       const location = window.__phoenixSourceMapTracker.getSourceLocation(element);
       return location.filePath;
     }
 
-    // Fallback: check explicit attributes
-    const componentId = element.getAttribute('data-component-source');
-    if (componentId) return componentId;
-
-    const dataFile = element.getAttribute('data-file');
-    if (dataFile) return dataFile;
-
-    // Attempt to derive from class names or data attributes
-    const className = element.className;
-    if (className && typeof className === 'string' && className.includes('-')) {
-      const segments = className.split('-');
-      return `./src/components/${segments[0]}/${segments[0]}.tsx`;
-    }
-
-    return `./src/app/page.tsx`; // Default fallback
+    // Final fallback
+    log('⚠️  No tracking data available for element');
+    return './src/app/page.tsx';
   }
 
   function extractLineNumberFromElement(element) {
-    // Use source map tracker if available
+    // PRIORITY 1: Check for stamped line number
+    const stampedLine = element.getAttribute('data-phoenix-line');
+    if (stampedLine) {
+      const lineNumber = parseInt(stampedLine, 10);
+      log('✅ Using stamped line:', lineNumber);
+      return lineNumber;
+    }
+
+    // PRIORITY 2: Try index lookup
+    if (window.__phoenixIndexLoader) {
+      const nodeId = element.getAttribute('data-phoenix-id');
+      if (nodeId) {
+        const entry = window.__phoenixIndexLoader.findByNodeId(nodeId);
+        if (entry) {
+          return entry.line;
+        }
+      }
+    }
+
+    // PRIORITY 3: Use source map tracker
     if (window.__phoenixSourceMapTracker) {
       const location = window.__phoenixSourceMapTracker.getSourceLocation(element);
       return location.lineNumber;
     }
 
-    // Fallback: check explicit attribute
-    const lineAttr = element.getAttribute('data-line-number');
-    if (lineAttr) return parseInt(lineAttr);
-
-    // Estimate based on depth and position
-    return getElementDepth(element) * 3 + 10; // Rough estimate
+    // Final fallback
+    log('⚠️  No line number available for element');
+    return 1;
   }
 
   function extractColumnNumberFromElement(element) {
-    // Use source map tracker if available
+    // Check for stamped column number
+    const stampedCol = element.getAttribute('data-phoenix-col');
+    if (stampedCol) {
+      return parseInt(stampedCol, 10);
+    }
+
+    // Try index lookup
+    if (window.__phoenixIndexLoader) {
+      const nodeId = element.getAttribute('data-phoenix-id');
+      if (nodeId) {
+        const entry = window.__phoenixIndexLoader.findByNodeId(nodeId);
+        if (entry) {
+          return entry.col;
+        }
+      }
+    }
+
+    // Use source map tracker
     if (window.__phoenixSourceMapTracker) {
       const location = window.__phoenixSourceMapTracker.getSourceLocation(element);
       return location.columnNumber;
