@@ -73,7 +73,7 @@
   --sidebar-ring: 35 51% 65%;
 
   /* Custom Background Colors */
-  --bg-light-blue: 199 89% 92%; /* #E0F2FE */
+  --bg-light-blue: 204 94% 94%; /* #E0F2FE - Precise HSL conversion */
 }
 
 .light {
@@ -116,7 +116,7 @@
   --sidebar-ring: 35 51% 55%;
 
   /* Custom Background Colors */
-  --bg-light-blue: 199 89% 92%; /* #E0F2FE */
+  --bg-light-blue: 204 94% 94%; /* #E0F2FE - Precise HSL conversion */
 }
 
 @theme {
