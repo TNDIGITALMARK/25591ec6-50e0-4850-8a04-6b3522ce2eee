@@ -37,7 +37,7 @@ export default function SellerPage() {
             {/* Page Header */}
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Seller Management Center
+                Seller Dashboard
               </h1>
               <p className="text-gray-600">
                 Manage your inventory, track sales, and grow your business
