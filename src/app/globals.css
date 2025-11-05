@@ -71,6 +71,9 @@
   --sidebar-accent-foreground: 36 45% 95%;
   --sidebar-border: 220 15% 22%;
   --sidebar-ring: 35 51% 65%;
+
+  /* Custom Background Colors */
+  --bg-light-blue: 199 89% 92%; /* #E0F2FE */
 }
 
 .light {
@@ -111,6 +114,9 @@
   --sidebar-accent-foreground: 220 25% 10%;
   --sidebar-border: 220 15% 88%;
   --sidebar-ring: 35 51% 55%;
+
+  /* Custom Background Colors */
+  --bg-light-blue: 199 89% 92%; /* #E0F2FE */
 }
 
 @theme {
@@ -482,4 +488,9 @@ input::placeholder {
 
 .chart-no {
   color: hsl(var(--destructive));
+}
+
+/* Custom background utility */
+.bg-light-blue {
+  background-color: hsl(var(--bg-light-blue));
 }
