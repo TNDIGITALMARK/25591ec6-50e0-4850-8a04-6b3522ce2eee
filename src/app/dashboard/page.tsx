@@ -18,7 +18,7 @@ export default function DashboardPage() {
       : mockMarkets.filter((market) => market.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: '#E0F2FE' }}>
       <MarketHeader />
 
       <main className="container py-8">
