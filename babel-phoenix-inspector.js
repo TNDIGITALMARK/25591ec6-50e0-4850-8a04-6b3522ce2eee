@@ -6,7 +6,7 @@
  */
 
 const crypto = require('crypto');
-const path = require('path');
+const nodePath = require('path');
 
 /**
  * Generate deterministic node ID
@@ -54,7 +54,7 @@ module.exports = function(babel) {
 
         // Get relative path from project root
         const cwd = process.cwd();
-        const relativePath = './' + path.relative(cwd, filename).replace(/\\/g, '/');
+        const relativePath = './' + nodePath.relative(cwd, filename).replace(/\\/g, '/');
 
         // Get source location
         const line = path.node.loc?.start.line || 0;

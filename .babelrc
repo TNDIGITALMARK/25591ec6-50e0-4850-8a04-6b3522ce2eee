@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "./babel-phoenix-inspector.js",
+      {
+        "projectId": "25591ec6-50e0-4850-8a04-6b3522ce2eee",
+        "gitSha": "9199339d"
+      }
+    ]
+  ]
+}

@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
 
 
   webpack: (config, { dev, isServer }) => {
+    // Phoenix Inspector metadata
+    if (!isServer && process.env.PHOENIX_INSPECTOR === '1') {
+      console.log('🔍 Phoenix Inspector: Babel plugin active via .babelrc');
+    }
+
+    return config;
+  },
+
+
+  webpack: (config, { dev, isServer }) => {
     // Phoenix Inspector - inject source location metadata
     if (!isServer && process.env.PHOENIX_INSPECTOR === '1') {
       try {
