@@ -67,7 +67,7 @@ export default function DashboardPage() {
 
         {/* Hero Section */}
         <div className="mb-8">
-          <h1 className="text-orange-500">
+          <h1 className="text-red-500">
             Turn Your Insights Into Returns
           </h1>
           <p className="text-lg text-muted-foreground">
