@@ -68,7 +68,7 @@ export default function DashboardPage() {
         {/* Hero Section */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">
-            Trade the Future
+            Turn Your Insights Into Returns
           </h1>
           <p className="text-lg text-muted-foreground">
             The first regulated exchange where you can trade on real-world events
@@ -145,7 +145,7 @@ export default function DashboardPage() {
                 <span className="text-xl font-bold text-foreground">Anthos</span>
               </Link>
               <p className="text-sm text-muted-foreground mt-4">
-                Trade the future with confidence on the first regulated prediction market exchange.
+                Turn your insights into returns on the first regulated prediction market exchange.
               </p>
             </div>
 

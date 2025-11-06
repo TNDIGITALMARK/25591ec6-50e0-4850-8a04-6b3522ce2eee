@@ -8,7 +8,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
-  title: "Anthos - Trade the Future",
+  title: "Anthos - Turn Your Insights Into Returns",
   description: "The first regulated prediction market exchange where you can trade on real-world events with confidence",
 };
 

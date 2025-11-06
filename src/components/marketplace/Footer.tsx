@@ -19,7 +19,7 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">Anthos</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-4">
-              Trade the future with confidence on the first regulated prediction market exchange.
+              Turn your insights into returns on the first regulated prediction market exchange.
             </p>
           </div>
 
