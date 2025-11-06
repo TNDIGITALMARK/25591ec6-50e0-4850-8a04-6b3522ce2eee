@@ -1,6 +1,7 @@
 'use client';
 
 import { MarketHeader } from '@/components/markets/MarketHeader';
+import { MarketFooter } from '@/components/markets/MarketFooter';
 import { TrendingUp, TrendingDown, DollarSign, Activity } from 'lucide-react';
 
 export default function PortfolioPage() {
@@ -186,6 +187,7 @@ export default function PortfolioPage() {
           </div>
         )}
       </main>
+      <MarketFooter />
     </div>
   );
 }

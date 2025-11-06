@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { MarketHeader } from '@/components/markets/MarketHeader';
+import { MarketFooter } from '@/components/markets/MarketFooter';
 import { mockMarkets } from '@/lib/mock-markets';
 import { TrendingUp, TrendingDown, Clock, Users, BarChart3, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -205,6 +206,7 @@ export default function MarketDetailPage() {
           </div>
         </div>
       </main>
+      <MarketFooter />
     </div>
   );
 }

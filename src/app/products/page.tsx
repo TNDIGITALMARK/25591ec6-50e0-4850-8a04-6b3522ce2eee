@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Header } from '@/components/marketplace/Header';
+import { Footer } from '@/components/marketplace/Footer';
 import { ProductCard } from '@/components/marketplace/ProductCard';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -217,6 +218,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

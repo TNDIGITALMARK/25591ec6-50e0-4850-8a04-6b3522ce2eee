@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Header } from '@/components/marketplace/Header';
+import { Footer } from '@/components/marketplace/Footer';
 import { Sidebar } from '@/components/marketplace/Sidebar';
 import { StatCard } from '@/components/marketplace/StatCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -523,6 +524,7 @@ export default function SellerPage() {
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }
