@@ -102,18 +102,20 @@
       
       elements.forEach(element => {
         if (!isValidTrackingElement(element)) return;
-        
-        // Skip if already has tracking ID
-        if (element.hasAttribute('data-phoenix-id')) return;
-        
-        // Generate phoenix ID
-        const phoenixId = 'phoenix-' + Date.now() + '-' + (++counter);
-        element.setAttribute('data-phoenix-id', phoenixId);
-        
-        // Create tracking data
+
+        // Check if element already has a build-time stamped ID
+        let phoenixId = element.getAttribute('data-phoenix-id');
+
+        if (!phoenixId) {
+          // Generate runtime ID only if no build-time ID exists
+          phoenixId = 'phoenix-' + Date.now() + '-' + (++counter);
+          element.setAttribute('data-phoenix-id', phoenixId);
+        }
+
+        // Always create tracking data and add to map (even for build-time stamped elements)
         const trackingData = createElementData(element);
         trackingElements.set(phoenixId, trackingData);
-        
+
         elementCounter++;
       });
     });
