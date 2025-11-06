@@ -20,7 +20,7 @@ export function MarketHeader() {
             className="w-8 h-8"
           />
           <div className="font-bold text-xl">
-            <span className="text-foreground">Anthos</span>
+            <span className="bg-purple-500">Anthos</span>
           </div>
         </Link>
 
